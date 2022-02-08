@@ -10,14 +10,14 @@ class Router:
     RANGE_REGEX = re.compile(r"bytes=([0-9]+)-")
     BLOCK_SIZE = MAX_CHUNK_SIZE
     ext_attachment = [".mp4", ]
-
+    chatid = Config.CHANNEL
 
     @aiohttp_jinja2.template('t.html')
     async def streamx(self, request):
       id_hex = request.match_info.get("id")
       serial = request.match_info.get("serial")
       id = int(id_hex)
-      message = await self.client.get_messages(-1001631582129, ids=id)
+      message = await self.client.get_messages(chatid, ids=id)
       name = self.get_file_name(message)
       url = f"{Config.DOMAIN}/{id}"
       punc = '''!()[]|{};:'="\,<>./?@#$%^&*~'''
@@ -31,7 +31,7 @@ class Router:
     async def name(self, request):
       id_hex = request.match_info.get("id")
       id = int(id_hex)
-      message = await self.client.get_messages(-1001631582129, ids=id)
+      message = await self.client.get_messages(chatid, ids=id)
       name = self.get_file_name(message)
       return web.Response(text=name)
 
@@ -46,7 +46,7 @@ class Router:
         except ValueError:
             return web.HTTPNotFound()
         
-        message = await self.client.get_messages(-1001631582129, ids=id)
+        message = await self.client.get_messages(chatid, ids=id)
 
         if not message or not message.file :
             return web.HTTPNotFound()

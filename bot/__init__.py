@@ -32,6 +32,7 @@ def get_file_name(message):
 
 @client.on(events.NewMessage)
 async def download(event):
-    await event.reply(f"BOT IS WORKING!")         
+    if (pv := event.is_private):
+        await event.reply(f"BOT IS WORKING!")         
                     
 client.run_until_disconnected()

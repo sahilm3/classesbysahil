@@ -5,3 +5,4 @@ class Config:
     API_HASH = os.environ.get('API_HASH', None)
     TOKEN = os.getenv("token","xxxxx")
     DOMAIN  = os.getenv("domain","https://newdlstar.herokuapp.com")
+    CHANNEL = int(os.getenv("channel","-1001249461809") )

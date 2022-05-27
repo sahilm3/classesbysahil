@@ -27,8 +27,8 @@ username_bot = client.get_me().username
 def get_file_name(message):
     if message.file.name:
         return quote(message.file.name)
-    ext = message.file.ext or ""
-    return f"123"
+    
+    
 
 @client.on(events.NewMessage)
 async def download(event):

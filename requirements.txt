@@ -3,7 +3,7 @@ hachoir
 pillow
 werkzeug
 aiohttp
-Telethon
+telethon
 requests
 gunicorn
 aiohttp-jinja2

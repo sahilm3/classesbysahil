@@ -2,8 +2,8 @@
     "version": 2,
     "builds": [
         {
-            "src": "./m.py",
-            "use": "@vercel/python"
+            "src": "./start.sh",
+            "use": "@vercel/bash"
         }
     ],
     "routes": [
